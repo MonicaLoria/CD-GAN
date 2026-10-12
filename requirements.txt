@@ -1,0 +1,17 @@
+# CD-GAN reviewer revision -- pinned to what was verified against (adjust
+# torch/cuda build tag to match your server's CUDA version; everything else
+# is version-range pinned, not exact-pinned, since this environment could
+# not install torch to verify exact compatibility (see README "Verification
+# notes").
+torch>=2.1   # Rev 4: <2.6 cap removed; checkpoint loading fixed for torch>=2.6
+numpy>=1.24,<3.0
+pandas>=2.0,<3.0
+scikit-learn>=1.3,<2.0
+scipy>=1.10,<2.0
+joblib>=1.3,<2.0
+lightgbm>=4.0,<5.0   # optional; evaluation.py degrades gracefully (skips LightGBM) if absent
+# Rev 4 additions
+matplotlib>=3.7          # critical-difference diagrams in stats_analysis.py
+imbalanced-learn>=0.12   # SMOTE / ADASYN baselines (run_baselines.py)
+sdv>=1.9                 # CTGAN / TVAE / GaussianCopula / CopulaGAN baselines (run_baselines.py)
+# Verified in this revision with: torch 2.14 (CPU), numpy, pandas 2.3.3, scikit-learn, scipy 1.17, sdv 1.38.5
